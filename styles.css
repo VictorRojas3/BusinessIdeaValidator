@@ -1,0 +1,116 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #3ec8a2;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.intro-text {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.rules {
+    margin-bottom: 20px;
+}
+
+.rules h2 {
+    color: #3ec8a2;
+    margin-bottom: 10px;
+}
+
+.rules ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.rules li {
+    margin-bottom: 10px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #3ec8a2;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #2bbf8b;
+}
+
+/* Estilos para el diseño del loading */
+#loading {
+    display: none;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3ec8a2;
+    width: 120px;
+    height: 120px;
+    margin: 20px auto;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Estilos para la respuesta */
+#response {
+    font-size: 14px;
+    color: #333;
+}
+
+.response-section {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.response-section h3 {
+    margin: 0;
+    color: #3ec8a2;
+}
+
+.response-section p {
+    margin: 5px 0;
+    font-size: 14px;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validador de Ideas de Negocio</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Validador de Ideas</h1>
+        <p class="intro-text">Valida tu idea de negocio para obtener una evaluación detallada. Asegúrate de ser específico y claro en tu descripción para obtener mejores resultados.</p>
+        
+        <div class="rules">
+            <h2>Reglas para Ingresar tu Idea</h2>
+            <ul>
+                <li>Comienza tu descripción con "Mi negocio es de...".</li>
+                <li>Sé muy específico sobre a qué se dedica tu negocio.</li>
+                <li>Incluye detalles relevantes que puedan ayudar a proporcionar un análisis más preciso.</li>
+            </ul>
+        </div>
+        
+        <textarea id="input" rows="5" placeholder="Mi negocio es de..."></textarea>
+        <button onclick="submitIdea()">Validar Idea</button>
+        <div id="loading"></div>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        function submitIdea() {
+            const input = document.getElementById('input').value;
+            document.getElementById('loading').style.display = 'block'; // Show loading animation
+
+            fetch('/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ input: input })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('loading').style.display = 'none'; // Hide loading animation
+                displayResponse(data.response);
+            })
+            .catch(error => {
+                document.getElementById('loading').style.display = 'none'; // Hide loading animation
+                document.getElementById('response').innerHTML = 'Error: ' + error.message;
+            });
+        }
+
+        function displayResponse(response) {
+            const sections = response.split('\n\n').filter(section => section.trim() !== '');
+            let html = '';
+            const sectionTitles = ['Fortaleza', 'Debilidades', 'Competidores', 'Alcance', 'Recomendaciones'];
+
+            sections.forEach((section, index) => {
+                if (index < sectionTitles.length) {
+                    html += `<div class="response-section">
+                                <h3>${sectionTitles[index]}:</h3>
+                                <p>${section}</p>
+                             </div>`;
+                }
+            });
+
+            document.getElementById('response').innerHTML = html;
+        }
+    </script>
+</body>
+</html>
+
